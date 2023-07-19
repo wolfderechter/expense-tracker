@@ -1,8 +1,10 @@
-# my-mu-project
+# Expense tracker
 
-1. `git clone git@github.com:wolfderechter/my-mu-project.git`
+uses mu-project and ember-js
 
-2. `cd my-mu-project`
+1. `git clone git@github.com:wolfderechter/expense-tracker.git`
+
+2. `cd expense-tracker`
 
 3. `docker compose up`
 
