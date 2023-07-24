@@ -7,5 +7,5 @@
                 (:value :number ,(s-prefix "schema:value"))
                 (:date :date ,(s-prefix "schema:date")))
   ;; what does this mean? Necessary?
-  :resource-base (s-url "http://mu.semte.ch/services/github/madnificent/book-service/books/")
+  :resource-base (s-url "http://mu.semte.ch/application/expense-tracker/expenses/")
   :on-path "expenses")

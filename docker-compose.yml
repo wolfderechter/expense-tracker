@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   identifier:
@@ -13,7 +13,7 @@ services:
     image: semtech/mu-dispatcher:2.0.0
     links:
       - resource:resource
-      - expenselisting:expenses
+      - expenseservice:expenses
     volumes:
       - ./config/dispatcher:/config
   database:
@@ -34,8 +34,8 @@ services:
       - ./config/resources:/config
 
   # My custom service
-  expenselisting:
-    image: localhost/expense-serivce:latest
+  expenseservice:
+    image: localhost/expense-service:latest
     build:
       context: ./my-service
       dockerfile: Dockerfile
