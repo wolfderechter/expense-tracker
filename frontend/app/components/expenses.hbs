@@ -1,0 +1,42 @@
+<ul class="list-none p-0 w-[66%] md:w-[33%]">
+  {{#each this.sorted as |expense|}}
+  <li class="relative flex flex-col bg-white rounded-lg shadow-md mb-4 p-4 w-full">
+    <div>
+      <p class="text-gray-800 text-lg font-bold mb-2">{{expense.title}}</p>
+      <p class="text-gray-600 mb-2">{{expense.category}}</p> <!-- New line -->
+    </div>
+    <div class="flex-grow"></div>
+    <div class="text-gray-600 flex justify-between items-center">
+      <span>
+        {{expense.date}}
+      </span>
+      <span class="text-xl">
+        ${{expense.value}}
+      </span>
+    </div>
+    <button {{on "click" (fn this.removeExpense expense)}} class="absolute top-0 right-0 mt-2 mr-2">
+      x
+    </button>
+  </li>
+  {{/each}}
+</ul>
+
+<!-- <ul class="list-none p-0 w-[66%] md:w-[33%]">
+  {{#each this.sorted as |expense|}}
+  <li class="flex items-center bg-white rounded-lg shadow-md mb-4 p-4 w-full">
+    <div class="flex-grow">
+      <p class="text-gray-800 text-lg font-bold">{{expense.title}}</p>
+      <div class="text-gray-600 flex justify-between items-center">
+        <span>
+          {{expense.date}}
+        </span>
+        <span class="text-xl">
+          ${{expense.value}}
+        </span>
+      </div>
+    </div>
+<button {{on "click" (fn this.removeExpense expense)}} class=mb-16> x
+</button>
+</li>
+{{/each}}
+</ul> -->

@@ -1,37 +1,8 @@
-{{page-title "Home"}}
+{{page-title "Expenses"}}
 
 <h1 class="text-3xl">Expenses History</h1>
+<Expenses @expenses={{@model}} />
 
-<ul>
-  {{#each @model as |expense|}}
-  <!-- <li>{{expense.title}} - ${{expense.value}} - {{expense.date}} -->
-  <!-- Breaks my application? -->
-  <!-- <button {{on "click" fn this.removeExpense expense}}>Remove</button> -->
-  <!-- </li> -->
-  {{/each}}
-</ul>
-
-<ul class="list-none p-0 w-[33%]">
-  {{#each @model as |expense|}}
-  <li class="flex items-center bg-white rounded-lg shadow-md mb-4 p-4 w-full">
-    <div class="flex-grow">
-      <p class="text-gray-800 text-lg font-bold">{{expense.title}}</p>
-      <div class="text-gray-600 flex justify-between items-center">
-        <span>
-          {{expense.date}}
-        </span>
-        <span class="text-xl">
-          ${{expense.value}}
-        </span>
-      </div>
-    </div>
-    <!-- Breaks my application? -->
-    <!-- <button {{on "click" fn this.removeExpense expense}} class="ml-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-      Remove
-    </button> -->
-  </li>
-  {{/each}}
-</ul>
 
 <LinkTo @route='expense' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New Expense
 </LinkTo>

@@ -35,8 +35,6 @@ export default class ExpenseController extends Controller {
 
   @action
   removeExpense(expense, event) {
-    console.log('llll');
-    console.log(event, expense);
     event.preventDefault();
     expense.destroyRecord();
   }
