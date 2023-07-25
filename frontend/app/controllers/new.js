@@ -3,20 +3,19 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
-export default class ExpenseController extends Controller {
+export default class NewController extends Controller {
   @tracked newTitle;
   @tracked newCategory;
   @tracked newValue;
   @tracked newDate;
 
-
-  @service store
+  @service store;
 
   @action
   createExpense(event) {
     event.preventDefault();
 
-    if (this.newTitle === "") return;
+    if (this.newTitle === '') return;
 
     const expense = this.store.createRecord('expense', {
       title: this.newTitle,
@@ -31,11 +30,5 @@ export default class ExpenseController extends Controller {
     this.newCategory = '';
     this.newDate = '';
     this.newValue = '';
-  }
-
-  @action
-  removeExpense(expense, event) {
-    event.preventDefault();
-    expense.destroyRecord();
   }
 }

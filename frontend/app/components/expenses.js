@@ -9,12 +9,10 @@ export default class ExpensesComponent extends Component {
     let { expenses } = this.args;
 
     let sortedExpenses = [...expenses];
-    sortedExpenses.sort(
-      (a, b) => new Date(a.date) - new Date(b.date));
+    sortedExpenses.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     return sortedExpenses;
   }
-
 
   @action
   removeExpense(expense, event) {
