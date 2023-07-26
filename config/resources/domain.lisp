@@ -9,3 +9,5 @@
   ;; what does this mean? Necessary?
   :resource-base (s-url "http://mu.semte.ch/application/expense-tracker/expenses/")
   :on-path "expenses")
+
+;; (read-domain-file "master-account-domain.lisp")
