@@ -41,3 +41,14 @@ services:
       dockerfile: Dockerfile
     links:
       - database:database
+
+  # Frontend
+  emberjs:
+    build:
+      context: ./frontend/
+      dockerfile: docker/Dockerfile
+    ports:
+      - 4200:4200
+    volumes:
+      - ./frontend:/frontend
+      - /node_modules
