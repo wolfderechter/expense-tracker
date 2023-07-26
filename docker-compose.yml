@@ -17,7 +17,7 @@ services:
     volumes:
       - ./config/dispatcher:/config
   database:
-    image: redpencil/virtuoso:1.0.0
+    image: redpencil/virtuoso:1.2.0-rc.1
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
