@@ -17,7 +17,10 @@ defmodule Dispatcher do
   # end
 
   match "/expenses/*path" do
-     Proxy.forward conn, path, "http://expenseservice/expenses/"
+     Proxy.forward conn, path, "http://resource/expenses/"
+   end
+  match "/categories/*path" do
+     Proxy.forward conn, path, "http://resource/categories/"
    end
 
 

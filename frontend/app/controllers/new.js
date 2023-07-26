@@ -5,37 +5,77 @@ import { inject as service } from '@ember/service';
 
 export default class NewController extends Controller {
   @tracked newTitle;
-  @tracked newCategory;
+  @tracked existingCategory;
   @tracked newValue;
   @tracked newDate;
 
   @service store;
+  @tracked categories;
+  @tracked newCategory;
 
 
   constructor() {
     super(...arguments);
+  }
+
+  async init() {
+    super.init();
+
     // Set the date to today by default in the form
     this.newDate = new Date().toISOString().split('T')[0];
+
+    try {
+      // Fetch categories using async/await
+      this.categories = await this.store.findAll('category');
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
   }
 
   @action
-  createExpense(event) {
+  async createExpense(event) {
     event.preventDefault();
 
     if (this.newTitle === '') return;
-
     const expense = this.store.createRecord('expense', {
       title: this.newTitle,
-      category: this.newCategory,
+      category: this.existingCategory,
       value: this.newValue,
       date: this.newDate,
     });
-    expense.save();
 
+    try {
+      await expense.save();
+    } catch (error) {
+      console.error('Error creating expense:', error);
+    }
     // clear input fields
     this.newTitle = '';
-    this.newCategory = '';
+    this.existingCategory = '';
     this.newDate = '';
     this.newValue = '';
+  }
+
+  @action
+  async createCategory(event) {
+    event.preventDefault();
+
+    if (this.newCategory === '') return;
+
+
+    // check if exists or create category
+    let category = null;
+    if (this.newCategory !== '') {
+      category = this.store.createRecord('category', {
+        title: this.newCategory,
+      });
+
+      try {
+        await category.save();
+      } catch (error) {
+        console.error('Error creating category:', error);
+      }
+    }
+
   }
 }
