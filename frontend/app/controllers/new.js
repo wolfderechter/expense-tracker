@@ -11,6 +11,13 @@ export default class NewController extends Controller {
 
   @service store;
 
+
+  constructor() {
+    super(...arguments);
+    // Set the date to today by default in the form
+    this.newDate = new Date().toISOString().split('T')[0];
+  }
+
   @action
   createExpense(event) {
     event.preventDefault();
