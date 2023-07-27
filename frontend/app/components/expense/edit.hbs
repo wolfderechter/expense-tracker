@@ -18,9 +18,10 @@
       <select
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="category" {{on "change" this.selectCategory}}>
-        <option value="">Select a category</option>
         {{#each this.categories as |category|}}
-        <option value={{category.id}}>{{category.title}}</option>
+        <option value={{category.id}} selected="{{if (eq category.id this.existingCategoryID) true}}">
+          {{category.title}}
+        </option>
         {{/each}}
       </select>
     </div>

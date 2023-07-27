@@ -79,5 +79,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-truth-helpers": "^3.1.1"
   }
 }

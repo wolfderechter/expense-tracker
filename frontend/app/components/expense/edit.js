@@ -6,7 +6,8 @@ import { tracked } from '@glimmer/tracking';
 
 export default class ExpensesComponent extends Component {
   @service store;
-  @tracked existingCategory = null;
+  @tracked existingCategoryID;
+  @tracked selectedCategory = null;
   @tracked categories;
 
   constructor() {
@@ -18,16 +19,18 @@ export default class ExpensesComponent extends Component {
   async initialize() {
     try {
       this.categories = await this.store.findAll('category');
+      this.existingCategoryID = this.args.expense.category.id;
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
   }
 
+
   @action
   async selectCategory(event) {
     // Get the selected category ID from the event
     const selectedCategoryID = event.target.value;
-    this.existingCategory = await this.store.findRecord('category', selectedCategoryID);
+    this.selectedCategory = await this.store.findRecord('category', selectedCategoryID);
   }
 
   @action
@@ -36,8 +39,8 @@ export default class ExpensesComponent extends Component {
     expense.save();
 
     // Only update the category when one is selected
-    if (this.existingCategory !== null) {
-      expense.category = this.existingCategory;
+    if (this.selectedCategory !== null) {
+      expense.category = this.selectedCategory;
       expense.save();
     }
   }
