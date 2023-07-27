@@ -15,8 +15,14 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
         Category
       </label>
-      <Input @value={{@expense.category}} id="category"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+      <select
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="category" {{on "change" this.selectCategory}}>
+        <option value="">Select a category</option>
+        {{#each this.categories as |category|}}
+        <option value={{category.id}}>{{category.title}}</option>
+        {{/each}}
+      </select>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="value">

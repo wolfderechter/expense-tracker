@@ -18,6 +18,7 @@ export default class NewController extends Controller {
     super(...arguments);
   }
 
+  // only used for controllers
   async init() {
     super.init();
 
@@ -33,22 +34,29 @@ export default class NewController extends Controller {
   }
 
   @action
+  async selectCategory(event) {
+    // Get the selected category ID from the event
+    const selectedCategoryID = event.target.value;
+    this.existingCategory = await this.store.findRecord('category', selectedCategoryID);
+  }
+
+  @action
   async createExpense(event) {
     event.preventDefault();
 
     if (this.newTitle === '') return;
+
     const expense = this.store.createRecord('expense', {
       title: this.newTitle,
-      category: this.existingCategory,
+      // category: this.existingCategory,
       value: this.newValue,
       date: this.newDate,
     });
 
-    try {
-      await expense.save();
-    } catch (error) {
-      console.error('Error creating expense:', error);
-    }
+    await expense.save();
+    expense.category = this.existingCategory;
+    await expense.save();
+
     // clear input fields
     this.newTitle = '';
     this.existingCategory = '';
@@ -72,6 +80,7 @@ export default class NewController extends Controller {
 
       try {
         await category.save();
+        this.newCategory = '';
       } catch (error) {
         console.error('Error creating category:', error);
       }
