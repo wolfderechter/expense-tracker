@@ -6,6 +6,10 @@ export default class IndexRoute extends Route {
 
   // find all expenses
   async model() {
-    return this.store.findAll('expense');
+    const categories = await this.store.findAll('category');
+
+    const expenses = await this.store.findAll('expense');
+
+    return { expenses, categories };
   }
 }
