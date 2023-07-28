@@ -7,6 +7,7 @@ import { tracked } from '@glimmer/tracking';
 export default class ExpensesComponent extends Component {
   @service store;
   @tracked existingCategoryID;
+  @tracked newCategory;
   @tracked selectedCategory = null;
   @tracked categories;
 
@@ -43,5 +44,37 @@ export default class ExpensesComponent extends Component {
       expense.category = this.selectedCategory;
       expense.save();
     }
+  }
+
+  @action
+  async createCategory(event) {
+    event.preventDefault();
+
+    if (this.newCategory === '') return;
+
+
+    // check if exists or create category
+    let categoryExists = false;
+    this.categories.forEach(cat => {
+      if (cat.title === this.newCategory) {
+        categoryExists = true;
+      }
+    });
+
+    if (categoryExists) return;
+
+    let category = null;
+    category = this.store.createRecord('category', {
+      title: this.newCategory,
+    });
+
+    try {
+      await category.save();
+      this.newCategory = '';
+    } catch (error) {
+      console.error('Error creating category:', error);
+    }
+
+
   }
 }

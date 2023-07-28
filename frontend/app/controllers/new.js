@@ -72,19 +72,27 @@ export default class NewController extends Controller {
 
 
     // check if exists or create category
-    let category = null;
-    if (this.newCategory !== '') {
-      category = this.store.createRecord('category', {
-        title: this.newCategory,
-      });
-
-      try {
-        await category.save();
-        this.newCategory = '';
-      } catch (error) {
-        console.error('Error creating category:', error);
+    let categoryExists = false;
+    this.categories.forEach(cat => {
+      if (cat.title === this.newCategory) {
+        categoryExists = true;
       }
+    });
+
+    if (categoryExists) return;
+
+    let category = null;
+    category = this.store.createRecord('category', {
+      title: this.newCategory,
+    });
+
+    try {
+      await category.save();
+      this.newCategory = '';
+    } catch (error) {
+      console.error('Error creating category:', error);
     }
+
 
   }
 }
