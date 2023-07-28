@@ -8,7 +8,7 @@ uses mu-project and ember-js
 
 3. `docker compose up`
 
-4. `cd frontend`
+4. `cd expense-tracker-frontend`
 
 5. `npm install`
 
