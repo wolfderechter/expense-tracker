@@ -5,50 +5,53 @@ services:
     image: semtech/mu-identifier:1.9.1
     environment:
       SESSION_COOKIE_SECURE: "on"
+      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"public"}]'
     links:
       - dispatcher:dispatcher
     ports:
       - "80:80"
+
   dispatcher:
     image: semtech/mu-dispatcher:2.0.0
     links:
       - resource:resource
-      # - expenseservice:expenses
     volumes:
       - ./config/dispatcher:/config
+
+  # mu-authorization layer
   database:
+    image: semtech/mu-authorization:0.6.0-beta.8
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+    volumes:
+      - ./config/authorization:/config
+
+  # virtuoso database
+  triplestore:
     image: redpencil/virtuoso:1.2.0-rc.1
     environment:
       SPARQL_UPDATE: "true"
-      DEFAULT_GRAPH: "http://mu.semte.ch/application"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/public"
     ports:
       - "8890:8890"
     volumes:
       - ./data/db:/data
       - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
+
   resource:
-    image: semtech/mu-cl-resources:1.20.0
+    image: semtech/mu-cl-resources:1.22.2
     links:
       - database:database
     volumes:
       - ./config/resources:/config
 
-  # My custom service
-  # expenseservice:
-  #   image: localhost/expense-service:latest
-  #   build:
-  #     context: ./my-service
-  #     dockerfile: Dockerfile
-  #   links:
-  #     - database:database
-
   # Frontend
-  # emberjs:
-  #   build:
-  #     context: ./frontend/
-  #     dockerfile: docker/Dockerfile
-  #   ports:
-  #     - 4200:4200
-  #   volumes:
-  #     - ./frontend:/frontend
-  #     - /node_modules
+  emberjs:
+    build:
+      context: ../expense-tracker-frontend/
+      dockerfile: docker/Dockerfile
+    ports:
+      - 4200:4200
+    volumes:
+      - ../expense-tracker-frontend/:/frontend
+      - /node_modules
