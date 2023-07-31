@@ -55,3 +55,11 @@ services:
     volumes:
       - ../expense-tracker-frontend/:/frontend
       - /node_modules
+
+  # Migrations -- seed data
+  migrations:
+    image: semtech/mu-migrations-service:0.8.0
+    links:
+      - triplestore:database
+    volumes:
+      - ./config/migrations:/data/migrations

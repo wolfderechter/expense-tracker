@@ -1,0 +1,27 @@
+  PREFIX schema: <http://schema.org/>
+  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+  INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000101> a schema:Expense;
+        mu:uuid "64C21B44F410B00009000101";
+        schema:title "Pants";
+        schema:value "86";
+        schema:date "2023-05-20";
+        schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
+
+      <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000102> a schema:Expense;
+        mu:uuid "64C21B44F410B00009000102";
+        schema:title "Jacket";
+        schema:value "120";
+        schema:date "2023-05-21";
+        schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
+
+      <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000103> a schema:Expense;
+        mu:uuid "64C21B44F410B00009000103";
+        schema:title "shoes";
+        schema:value "99";
+        schema:date "2023-05-22";
+        schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
+    }
+  }
