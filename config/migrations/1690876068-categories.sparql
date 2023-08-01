@@ -1,0 +1,18 @@
+  PREFIX schema: <http://schema.org/>
+  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+  INSERT DATA {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001> a schema:Category;
+        mu:uuid "64C27358F410B00009000001";
+        schema:title "clothing".
+
+      <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000002> a schema:Category;
+        mu:uuid "64C3B292F410B00009000002";
+        schema:title "food".
+
+      <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000003> a schema:Category;
+        mu:uuid "64C3B292F410B00009000003";
+        schema:title "tech".
+  }
+}
