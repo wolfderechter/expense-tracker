@@ -7,21 +7,21 @@
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000001> a schema:Expense;
         mu:uuid "64C21B44F410B00009000001";
         schema:title "Pants";
-        schema:value "86";
+        schema:value 86;
         schema:date "2023-05-20";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
 
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000002> a schema:Expense;
         mu:uuid "64C21B44F410B00009000002";
         schema:title "Jacket";
-        schema:value "120";
+        schema:value 120;
         schema:date "2023-05-21";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
 
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000003> a schema:Expense;
         mu:uuid "64C21B44F410B00009000003";
         schema:title "shoes";
-        schema:value "99";
+        schema:value 99;
         schema:date "2023-05-22";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C27358F410B00009000001>.
 
@@ -29,14 +29,14 @@
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000004> a schema:Expense;
         mu:uuid "64C21B44F410B0000900004";
         schema:title "Pizza";
-        schema:value "9";
+        schema:value 9;
         schema:date "2023-05-25";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000002>.
 
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000005> a schema:Expense;
         mu:uuid "64C21B44F410B00009000005";
         schema:title "Fruit";
-        schema:value "5";
+        schema:value 5;
         schema:date "2023-06-01";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000002>.
 
@@ -44,7 +44,7 @@
       <http://mu.semte.ch/application/expense-tracker/expenses/64C21B44F410B00009000006> a schema:Expense;
         mu:uuid "64C21B44F410B00009000006";
         schema:title "Laptop";
-        schema:value "875";
+        schema:value 875;
         schema:date "2023-06-02";
         schema:category <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000003>.
     }
