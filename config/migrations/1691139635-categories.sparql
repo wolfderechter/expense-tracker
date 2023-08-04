@@ -14,5 +14,13 @@
       <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000003> a schema:Category;
         mu:uuid "64C3B292F410B00009000003";
         schema:title "tech".
+
+      <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000004> a schema:Category;
+        mu:uuid "64C3B292F410B00009000004";
+        schema:title "public transport".
+
+      <http://mu.semte.ch/application/expense-tracker/categories/64C3B292F410B00009000005> a schema:Category;
+        mu:uuid "64C3B292F410B00009000005";
+        schema:title "hobby".
   }
 }
